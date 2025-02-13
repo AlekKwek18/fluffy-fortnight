@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat</title>
+    <link rel="stylesheet" href="./yes_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/spin-wheel@5.0.2/dist/spin-wheel-iife.js"></script>
+
+    <style>
+        /* Add wheel styles */
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #ff69b4;
+            position: relative;
+            overflow: hidden;
+            transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .segment {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+            transform-origin: 50% 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 40px solid #ff69b4;
+            z-index: 2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Hmmmm where are we going to eat hehe</h1>
+        <div class="wheel-container hidden">
+            <div class="pointer"></div>
+            <div class="wheel" id="wheel">
+                <!-- Segments will be added dynamically -->
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="yes-button" onclick="startSpin()">Continue</button>
+        </div>
+    </div>
+
+    <script>
+// 1. Configure the wheel's properties:
+const props = {
+  items: [
+    {
+      label: 'one',
+    },
+    {
+      label: 'two',
+    },
+    {
+      label: 'three',
+    },
+  ]
+}
+
+// 2. Decide where you want it to go:
+const container = document.querySelector('.wheel-container');
+
+// 3. Create the wheel in the container and initialise it with the props:
+const wheel = new Wheel(container, props);
+const winningItemIndex = await fetchWinningItemIndex();
+const duration = 4000;
+const easing = easing.cubicOut;
+wheel.spinToItem(winningItemIndex, duration, true, 2, 1, easing)
+    </script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin-wheel@5.0.2/dist/spin-wheel-iife.js"></script>
+</body>
+</html>
