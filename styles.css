@@ -58,6 +58,12 @@ body {
     border-radius: 10px;
     margin-top: 20px;
   }
+  .gif_container_oiia img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
 
   .gif_container img {
     width: 150px; /* Adjust as needed */
